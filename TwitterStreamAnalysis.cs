@@ -1,19 +1,14 @@
-﻿using Microsoft.Build.Utilities;
-using System;
+﻿using System;
 using System.Configuration;
 using System.IO;
 using System.Net;
-using System.Net.Http;
-using System.Net.Http.Headers;
-using System.Threading;
 using System.Threading.Tasks;
-using System.Timers;
 
 namespace TwitterAPIApp
 {
     class TwitterStreamAnalysis
     {        
-        public static System.Threading.Tasks.Task Main()
+        public static void Main()
         {
             string bearerToken = ConfigurationManager.AppSettings["BEARERKEY"] ;
             string uri = ConfigurationManager.AppSettings["URI"];
@@ -28,8 +23,6 @@ namespace TwitterAPIApp
                 Console.WriteLine("Error while getting the bearer token and uri.");
 
             }
-
-            return System.Threading.Tasks.Task.CompletedTask;
         }
 
         public static void GetStream(string bearerTokem, HttpWebRequest twitterStream)
