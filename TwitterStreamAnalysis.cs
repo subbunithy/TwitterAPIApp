@@ -67,8 +67,8 @@ namespace TwitterAPIApp
                         string line = await sr.ReadLineAsync();
                         //Added count logic as  the 1% stream itself returns large data.
                         // uncomment below for testing less no. of tweets.
-                        if (line == null || count > 10)
-                        //if (line == null)
+                        //if (line == null || count > 10)
+                        if (line == null)
                         {
                             break;
                         }
