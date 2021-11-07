@@ -84,7 +84,7 @@ namespace TwitterAPIApp
             }
             catch (Exception e)
             {
-                Console.WriteLine("Error occurred while getting the tweets " + e.Message);
+                Console.WriteLine("Error occurred while getting the tweets  " + e.Message);
                 return 0;
             }
 
