@@ -38,12 +38,14 @@ namespace TwitterAPIApp
                 int totalCount = GetTweetTotalCount(twitterStream).Result;
                 var FinalTime = DateTime.Now;
 
-                TimeSpan duration = DateTime.Parse(currentTime.ToString()).Subtract(DateTime.Parse(FinalTime.ToString()));
+                TimeSpan duration = DateTime.Parse(FinalTime.ToString()).Subtract(DateTime.Parse(currentTime.ToString()));
                 var averageMinCount = totalCount / duration.TotalMinutes;
                 var averageSecCount = totalCount / duration.TotalSeconds;
 
                 Console.WriteLine("Total tweets: " + totalCount);
+                Console.WriteLine("");
                 Console.WriteLine("Average tweets per minute: " + averageMinCount);
+                Console.WriteLine("");
                 Console.WriteLine("Average tweets per second: " + averageSecCount);
             }
             catch (Exception e)
@@ -63,12 +65,17 @@ namespace TwitterAPIApp
                     while (true)
                     {
                         string line = await sr.ReadLineAsync();
-                        if (line == null || count > 10000)
+                        //Added count logic as  the 1% stream itself returns large data.
+                        // uncomment below for testing less no. of tweets.
+                        if (line == null || count > 10)
+                        //if (line == null)
                         {
                             break;
                         }
-                        Console.WriteLine("tweets............. " + line);
+                        Console.WriteLine("tweet............. " + line); 
+                        Console.WriteLine("");
                         Console.WriteLine("count of tweets............. " + count);
+                        Console.WriteLine("");
                         count++;
                     }
                 }
